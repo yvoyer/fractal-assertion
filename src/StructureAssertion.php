@@ -322,7 +322,7 @@ class StructureAssertion
      * @param int $max_depth
      * @return mixed[]
      */
-    final private function export($data, int $max_depth)
+    private function export($data, int $max_depth)
     {
         if (! is_array($data) || $max_depth === self::ALL_DEPTH) {
             return $data;

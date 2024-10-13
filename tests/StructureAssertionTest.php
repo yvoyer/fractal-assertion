@@ -166,7 +166,7 @@ final class StructureAssertionTest extends TestCase
     public function test_it_should_assert_array_node(): void
     {
         $this->expectException(ExpectationFailedException::class);
-        $this->expectExceptionMessage('Failed asserting that \'\' is of type "array".');
+        $this->expectExceptionMessage('Failed asserting that \'\' is of type array.');
         StructureAssertion::fromArray(
             [
                 'array' => '',
@@ -212,7 +212,8 @@ final class StructureAssertionTest extends TestCase
     public function test_it_should_assert_contains(): void
     {
         $this->expectException(ExpectationFailedException::class);
-        $this->expectExceptionMessage('Failed asserting that \'\' contains "value".');
+        // $this->expectExceptionMessage('Failed asserting that \'\' contains "value".');
+        $this->expectExceptionMessage('Failed asserting that \'\' [ASCII](length: 0) contains "value" [ASCII](length: 5).');
         StructureAssertion::fromArray(['data' => ''])
             ->assertContains('data', 'value')
         ;
@@ -317,7 +318,7 @@ final class StructureAssertionTest extends TestCase
     public function test_it_should_throw_exception_when_object_node_is_not_array(): void
     {
         $this->expectException(ExpectationFailedException::class);
-        $this->expectExceptionMessage('Failed asserting that \'\' is of type "array".');
+        $this->expectExceptionMessage('Failed asserting that \'\' is of type array.');
         StructureAssertion::fromArray(['data' => ''])->enterObjectNode('data');
     }
 
@@ -331,7 +332,7 @@ final class StructureAssertionTest extends TestCase
     public function test_it_should_throw_exception_when_array_node_is_not_array(): void
     {
         $this->expectException(ExpectationFailedException::class);
-        $this->expectExceptionMessage('Failed asserting that \'\' is of type "array".');
+        $this->expectExceptionMessage('Failed asserting that \'\' is of type array.');
         StructureAssertion::fromArray(['data' => ''])->enterArrayNode('data');
     }
 
@@ -345,7 +346,7 @@ final class StructureAssertionTest extends TestCase
     public function test_it_should_throw_exception_when_array_element_is_not_array(): void
     {
         $this->expectException(ExpectationFailedException::class);
-        $this->expectExceptionMessage('Failed asserting that \'data\' is of type "array".');
+        $this->expectExceptionMessage('Failed asserting that \'data\' is of type array.');
         StructureAssertion::fromArray(['data'])->enterArrayElement();
     }
 
